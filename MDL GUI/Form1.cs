@@ -251,7 +251,7 @@ namespace MDL_GUI
 
         private void forkMeOnGithubToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/petethegoat/");
+            Process.Start("https://github.com/Petethegoat/MDL-GUI");
         }
     }
 }
