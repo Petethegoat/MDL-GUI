@@ -129,7 +129,6 @@ namespace MDL_GUI
         private void buttonCompile_Click(object sender, EventArgs e)
         {
             Directory.SetCurrentDirectory(fileDir);
-            MessageBox.Show(Directory.GetCurrentDirectory());
             switch(Path.GetExtension(filePath))
             {
                 case ".qc":
