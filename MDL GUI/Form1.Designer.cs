@@ -36,11 +36,15 @@
             this.toolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.compMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.decompMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBoxConsole = new System.Windows.Forms.TextBox();
-            this.buttonGotoTarget = new System.Windows.Forms.Button();
+            this.defaultDirMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.unsetDefaultDir = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.byPetethegoatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonGotoTarget = new System.Windows.Forms.Button();
+            this.textBoxConsole = new System.Windows.Forms.TextBox();
+            this.setDefaultDir = new System.Windows.Forms.ToolStripMenuItem();
             this.forkMeOnGithubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.v12ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -105,7 +109,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsToolStripMenuItem,
-            this.aboutToolStripMenuItem});
+            this.aboutToolStripMenuItem,
+            this.v12ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(462, 24);
@@ -116,7 +121,8 @@
             // 
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.compMenu,
-            this.decompMenu});
+            this.decompMenu,
+            this.defaultDirMenu});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
             this.toolsToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
             this.toolsToolStripMenuItem.Text = "Tools";
@@ -135,29 +141,21 @@
             this.decompMenu.Text = "MDL Decompiler";
             this.decompMenu.Click += new System.EventHandler(this.decompMenu_Click);
             // 
-            // textBoxConsole
+            // defaultDirMenu
             // 
-            this.textBoxConsole.BackColor = System.Drawing.SystemColors.Desktop;
-            this.textBoxConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxConsole.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxConsole.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.textBoxConsole.Location = new System.Drawing.Point(0, 0);
-            this.textBoxConsole.Multiline = true;
-            this.textBoxConsole.Name = "textBoxConsole";
-            this.textBoxConsole.ReadOnly = true;
-            this.textBoxConsole.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxConsole.Size = new System.Drawing.Size(462, 188);
-            this.textBoxConsole.TabIndex = 0;
+            this.defaultDirMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.setDefaultDir,
+            this.unsetDefaultDir});
+            this.defaultDirMenu.Name = "defaultDirMenu";
+            this.defaultDirMenu.Size = new System.Drawing.Size(163, 22);
+            this.defaultDirMenu.Text = "Default Directory";
             // 
-            // buttonGotoTarget
+            // unsetDefaultDir
             // 
-            this.buttonGotoTarget.Location = new System.Drawing.Point(404, 27);
-            this.buttonGotoTarget.Name = "buttonGotoTarget";
-            this.buttonGotoTarget.Size = new System.Drawing.Size(32, 23);
-            this.buttonGotoTarget.TabIndex = 6;
-            this.buttonGotoTarget.Text = "..";
-            this.buttonGotoTarget.UseVisualStyleBackColor = true;
-            this.buttonGotoTarget.Click += new System.EventHandler(this.buttonGotoTarget_Click);
+            this.unsetDefaultDir.Name = "unsetDefaultDir";
+            this.unsetDefaultDir.Size = new System.Drawing.Size(196, 22);
+            this.unsetDefaultDir.Text = "Unset Default Directory";
+            this.unsetDefaultDir.Click += new System.EventHandler(this.unsetDefaultDir_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -173,14 +171,56 @@
             this.byPetethegoatToolStripMenuItem.Name = "byPetethegoatToolStripMenuItem";
             this.byPetethegoatToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.byPetethegoatToolStripMenuItem.Text = "By Petethegoat";
+            this.byPetethegoatToolStripMenuItem.ToolTipText = "https://github.com/petethegoat/";
             this.byPetethegoatToolStripMenuItem.Click += new System.EventHandler(this.byPetethegoatToolStripMenuItem_Click);
+            // 
+            // buttonGotoTarget
+            // 
+            this.buttonGotoTarget.Location = new System.Drawing.Point(404, 27);
+            this.buttonGotoTarget.Name = "buttonGotoTarget";
+            this.buttonGotoTarget.Size = new System.Drawing.Size(32, 23);
+            this.buttonGotoTarget.TabIndex = 6;
+            this.buttonGotoTarget.Text = "..";
+            this.buttonGotoTarget.UseVisualStyleBackColor = true;
+            this.buttonGotoTarget.Click += new System.EventHandler(this.buttonGotoTarget_Click);
+            // 
+            // textBoxConsole
+            // 
+            this.textBoxConsole.BackColor = System.Drawing.SystemColors.Desktop;
+            this.textBoxConsole.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxConsole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxConsole.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.textBoxConsole.Location = new System.Drawing.Point(0, 0);
+            this.textBoxConsole.Multiline = true;
+            this.textBoxConsole.Name = "textBoxConsole";
+            this.textBoxConsole.ReadOnly = true;
+            this.textBoxConsole.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxConsole.Size = new System.Drawing.Size(462, 188);
+            this.textBoxConsole.TabIndex = 0;
+            // 
+            // setDefaultDir
+            // 
+            this.setDefaultDir.Name = "setDefaultDir";
+            this.setDefaultDir.Size = new System.Drawing.Size(196, 22);
+            this.setDefaultDir.Text = "Set Default Directory";
+            this.setDefaultDir.Click += new System.EventHandler(this.setDefaultDir_Click);
             // 
             // forkMeOnGithubToolStripMenuItem
             // 
+            this.forkMeOnGithubToolStripMenuItem.Image = global::MDL_GUI.Properties.Resources.github_32_black;
             this.forkMeOnGithubToolStripMenuItem.Name = "forkMeOnGithubToolStripMenuItem";
             this.forkMeOnGithubToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
             this.forkMeOnGithubToolStripMenuItem.Text = "Fork me on Github!";
+            this.forkMeOnGithubToolStripMenuItem.ToolTipText = "https://github.com/Petethegoat/MDL-GUI";
             this.forkMeOnGithubToolStripMenuItem.Click += new System.EventHandler(this.forkMeOnGithubToolStripMenuItem_Click);
+            // 
+            // v12ToolStripMenuItem
+            // 
+            this.v12ToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.v12ToolStripMenuItem.Enabled = false;
+            this.v12ToolStripMenuItem.Name = "v12ToolStripMenuItem";
+            this.v12ToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.v12ToolStripMenuItem.Text = "V1.2";
             // 
             // Form1
             // 
@@ -226,5 +266,9 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem byPetethegoatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem forkMeOnGithubToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem defaultDirMenu;
+        private System.Windows.Forms.ToolStripMenuItem unsetDefaultDir;
+        private System.Windows.Forms.ToolStripMenuItem setDefaultDir;
+        private System.Windows.Forms.ToolStripMenuItem v12ToolStripMenuItem;
     }
 }
